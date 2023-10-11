@@ -1,0 +1,44 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="firstName">First Name: </label>
+        <input type="text" name="firstName" formControlName="firstName" required><br>
+        <label for="lastName">Last Name: </label>
+        <input type="text" name="lastName" formControlName="lastName" required><br>
+        <label for="middleName">Middle Name: </label>
+        <input type="text" name="middleName" formControlName="middleName"><br>
+        <label for="suffix">Suffix: </label>
+        <input type="text" name="suffix" formControlName="suffix"><br>
+        <label for="title">Title: </label>
+        <input type="text" name="title" formControlName="title"><br>
+        <label for="streetNo">Street No: </label>
+        <input type="text" name="streetNo" formControlName="streetNo" required><br>
+        <label for="barangay">Barangay: </label>
+        <input type="text" name="barangay" formControlName="barangay" required><br>
+        <label for="city">City: </label>
+        <input type="text" name="city" formControlName="city" required><br>
+        <label for="zipCode">Zip Code: </label>
+        <input type="text" name="zipCode" formControlName="zipCode" required><br>
+        <label for="birthday">Birthday: </label>
+        <input type="date" name="birthday" formControlName="birthday" required><br>
+        <label for="gwa">GWA: </label>
+        <input type="text" name="gwa" formControlName="gwa" required><br>
+        <label for="dateHired">Date Hired: </label>
+        <input type="date" name="dateHired" formControlName="dateHired" required><br>
+        <label for="landline">Landline: </label>
+        <input type="text" name="landline" formControlName="landline"><br>
+        <label for="mobileNumber">Mobile Number: </label>
+        <input type="text" name="mobileNumber"  formControlName="mobileNumber" required><br>
+        <label for="email">Email: </label>
+        <input type="text" name="email" formControlName="email" required><br>
+        <label for="roleIds">Select Role:</label>
+        <select id="roleIds" formControlName="roleIds" class="form-control" required>
+            <option [value]="null">Select a Role</option>
+            <option *ngFor="let role of roles" [ngValue]="role.id">{{ role.roleName }}</option>
+        </select>
+    </div>
+    <button type= "submit" [disabled]="personForm.invalid">Create Person</button>
+    <button routerLink="/home">Cancel</button>
+</form>

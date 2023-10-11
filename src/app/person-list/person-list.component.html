@@ -1,0 +1,31 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="person-list-container">
+    <h2>Person List</h2><br>
+    <label for="sortingCriteria">Sort by:</label>
+    <select id="sortingCriteria" [(ngModel)]="selectedSortingCriteria" (change)="getPersonsBySortingCriteria()">
+      <option [value]="SortingCriteria.GWA">GWA</option>
+      <option [value]="SortingCriteria.DateHired">Date Hired</option>
+      <option [value]="SortingCriteria.LastName">Last Name</option>
+    </select>
+  
+    <ul >
+      <li class="fadeIn first" *ngFor="let person of persons">
+        <h3>{{ person.firstName }} {{ person.lastName }} {{ person.middleName }} {{ person.suffix }} {{ person.title }}</h3>
+        <p>Id: {{ person.id }}</p>
+        <p>Address: {{ person.streetNo }} {{ person.barangay}} {{ person.city }} {{ person.zipCode }}</p>
+        <p>Birthday: {{ person.birthday }}</p>
+        <p>GWA: {{ person.gwa }}</p>
+        <p>Date Hired: {{ person.dateHired }}</p>
+        <p>Currently Employed: {{ person.currentlyEmployed }}</p>
+        <p>Contact Details: {{ person.landline }} {{ person.mobileNumber }} {{ person.email }}</p>
+        <p>Roles:</p>
+        <p *ngFor = "let role of person.roles"> <br>
+          {{ role.roleName }}</p>
+          <button class="edit" (click)="editPerson(person.id)">Edit</button>
+          <button class="delete" (click)="onDeletePerson(person.id)">Delete</button>
+      </li>
+    </ul>
+    <button routerLink="/home">Home</button>
+  </div>
